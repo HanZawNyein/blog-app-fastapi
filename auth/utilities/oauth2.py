@@ -11,7 +11,7 @@ from .utilities import user as USER
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl=settings.TOKEN_URL)
 
 
 def verify_password(plain_password, hashed_password):

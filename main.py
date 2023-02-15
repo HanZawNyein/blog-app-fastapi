@@ -1,20 +1,18 @@
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from database.database import Base, engine
-from fastapi import FastAPI
 from database.middleware import CustomHeaderMiddleware
-from blog.routes import post
-from auth.routes import auth
-from routes.token import router
+from blog.main import app as blog_app
+from auth.main import app as auth_app
 
 app = FastAPI()
 
 # middleware
 app.add_middleware(CustomHeaderMiddleware)
-app.include_router(router, tags=['Token'])
-app.include_router(auth.router, tags=['Auth'], prefix="/auth")
-app.include_router(post.router, tags=['Post'], prefix="/post")
 
+# apps
+app.mount("/auth", auth_app)
+app.mount("/blog", blog_app)
 
 # DB
 Base.metadata.create_all(bind=engine)

@@ -12,7 +12,7 @@ from auth.schemas.token import Token
 from auth.utilities.oauth2 import authenticate_user, create_access_token,get_current_active_user
 from config.ConfSettings import settings
 
-router = APIRouter(tags=["post"],dependencies=[Depends(get_current_active_user)])
+router = APIRouter()
 
 
 @router.get("/", response_model=list[Post])
