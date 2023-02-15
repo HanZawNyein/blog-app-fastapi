@@ -1,7 +1,7 @@
 from database.curd import Curd
 from fastapi import Request, HTTPException, status
 
-from auth.schemas.user import UserInDB, UserSignUp, BaseUser, User as SchemasUser
+from auth.schemas.user import UserInDB, BaseUser, User as SchemasUser
 from auth.models.user import User
 
 

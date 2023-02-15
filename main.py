@@ -1,14 +1,14 @@
 import uvicorn
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI
 from database.database import Base, engine
-from database.middleware import CustomHeaderMiddleware
+from middleware.request_user import RequestUserMiddleware
 from blog.main import app as blog_app
 from auth.main import app as auth_app
 
 app = FastAPI()
 
 # middleware
-app.add_middleware(CustomHeaderMiddleware)
+app.add_middleware(RequestUserMiddleware)
 
 # apps
 app.mount("/auth", auth_app)

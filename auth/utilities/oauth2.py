@@ -1,11 +1,11 @@
 from datetime import datetime, timedelta
 
 from fastapi import Depends, HTTPException, status, Request
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 
-from auth.schemas.token import Token, TokenData
+from auth.schemas.token import TokenData
 from config.ConfSettings import settings
 from .utilities import user as USER
 
