@@ -2,6 +2,7 @@ from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
+    HOST:str
     SQLALCHEMY_DATABASE_URL: str
     SECRET_KEY: str
     ALGORITHM: str
