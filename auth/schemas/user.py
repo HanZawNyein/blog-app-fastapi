@@ -6,6 +6,15 @@ class BaseUser(BaseModel):
     email: str
     full_name: str | None = None
 
+    class Config:
+        schema_extra = {
+            "example": {
+                "username": "hanzawnyein",
+                "email": "hanzawnyineonline@gmail.com",
+                "full_name": "Han Zaw Nyein"
+            }
+        }
+
 
 class User(BaseUser):
     is_active: bool | None = None
