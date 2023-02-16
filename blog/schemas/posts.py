@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
+from datetime import datetime
 
 
 class CreatePost(BaseModel):
@@ -21,6 +22,7 @@ class PostInDb(CreatePost):
 
 class Post(PostInDb):
     id: int
+    create_date: datetime
 
     class Config:
         orm_mode = True
@@ -30,6 +32,7 @@ class Post(PostInDb):
                 "id": 1,
                 "title": "Fast Api",
                 "description": """Hello""",
-                "owner_id": 1
+                "owner_id": 1,
+                "create_date":"2023-02-16T13:49:55.005386"
             }
         }
