@@ -18,4 +18,4 @@ app.mount("/blog", blog_app)
 Base.metadata.create_all(bind=engine)
 
 if __name__ == "__main__":
-    uvicorn.run(app, host=settings.HOST, port=8080)
+    uvicorn.run('main:app', host=settings.HOST, port=8080,reload=True)
