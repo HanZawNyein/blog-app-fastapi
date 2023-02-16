@@ -15,7 +15,11 @@ class CreatePost(BaseModel):
         }
 
 
-class Post(CreatePost):
+class PostInDb(CreatePost):
+    owner_id: int
+
+
+class Post(PostInDb):
     id: int
 
     class Config:
@@ -23,8 +27,9 @@ class Post(CreatePost):
 
         schema_extra = {
             "example": {
-                "id":1,
+                "id": 1,
                 "title": "Fast Api",
-                "description": """Hello"""
+                "description": """Hello""",
+                "owner_id": 1
             }
         }
